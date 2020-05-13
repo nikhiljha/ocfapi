@@ -12,6 +12,6 @@ def short_url(slug: str):
         with get_connection() as ctx:
             target = get_shorturl(ctx, slug)
             if target:
-                return RedirectResponse(target)
+                return RedirectResponse(target, status_code=302)
     raise HTTPException(status_code=404, detail="short url not found")
 
